@@ -2,7 +2,7 @@ require 'benchmark'
 require './ch1ex1_stack'
 
 
-quotes = Array.new(100000) { rand(1..9) }
+quotes = Array.new(100000) { rand(1..100000) }
 def simple_stock_span(quotes)
     spans = Array.new
     0.upto(quotes.length-1) do |i|
@@ -29,6 +29,7 @@ def stack_stock_span(quotes)
     s.push(0)
 
     1.upto(quotes.length-1) do |i|
+
         while !s.empty? && quotes[s.top] <= quotes[i] do
             s.pop
         end
